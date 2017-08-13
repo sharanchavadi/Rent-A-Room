@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170813170229) do
+ActiveRecord::Schema.define(version: 20170813174908) do
 
   create_table "amenities", force: :cascade do |t|
     t.string   "name"
@@ -20,14 +20,76 @@ ActiveRecord::Schema.define(version: 20170813170229) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "amenity_rooms", force: :cascade do |t|
+    t.integer  "room_id"
+    t.integer  "amenity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "user_id"
+    t.integer  "room_id"
+    t.boolean  "is_confirmed"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "cities", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "images", force: :cascade do |t|
+    t.string   "image"
+    t.integer  "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text     "review"
+    t.integer  "food_rating"
+    t.integer  "cleanliness_rating"
+    t.integer  "safety_rating"
+    t.integer  "facility_rating"
+    t.integer  "locality_rating"
+    t.integer  "room_id"
+    t.integer  "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.float    "price"
+    t.text     "rules"
+    t.integer  "minimum_days"
+    t.string   "address"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.boolean  "is_authorized"
+    t.integer  "city_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "special_prices", force: :cascade do |t|
+    t.float    "price"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
