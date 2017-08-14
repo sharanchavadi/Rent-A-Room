@@ -8,4 +8,9 @@ class User < ActiveRecord::Base
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates_presence_of :first_name, :last_name, :username, :email, :mobile, :role_id
+  validates_numericality_of :mobile, :role_id
+  validates_length_of :mobile, is:10
+
 end
