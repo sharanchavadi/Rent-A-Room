@@ -8,7 +8,18 @@
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
+<% if user_signed_in? %>
+Welcome <%= current_user.username %> <%= link_to "Account setting", edit_user_registration_path %> | <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+
+<% else %>
+
+<%= link_to "Login", new_user_session_path %> | <%= link_to "Sign up", new_user_registration_path %>
+<% end %>
+<br/>
+
+<%= link_to "cities", cities_path %> | <%= link_to "Amenities", amenities_path %>
+<br/>
+
 <p class="alert"><%= alert %></p>
 <%= yield %>
 

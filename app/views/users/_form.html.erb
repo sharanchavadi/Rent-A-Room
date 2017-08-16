@@ -12,9 +12,30 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
     <%= f.label :username %><br>
     <%= f.text_field :username %>
   </div>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :mobile %><br>
+    <%= f.text_field :mobile %>
+  </div>
+
   <div class="field">
     <%= f.label :password %><br>
     <%= f.password_field :password %>
@@ -22,7 +43,7 @@
 
   <div class="field">
     <%= f.label :roles %><br>
-    <%= f.collection_check_boxes :role_ids, Role.all, :id, :name %>
+    <%= f.collection_check_boxes :role_id, Role.all, :id, :name %>
   </div>
 
   <div class="actions">
