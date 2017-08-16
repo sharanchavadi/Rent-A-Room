@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :cities
   has_many :aminities
+  has_many :rooms
   belongs_to :role
   
   devise :database_authenticatable, :registerable,
