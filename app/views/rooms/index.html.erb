@@ -1,43 +1,47 @@
-<h2>Listing Rooms</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Rules</th>
-      <th>Minimum Days</th>
-      <th>Address</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>City</th>
-      <th>Owner</th>
-    </tr>
-  </thead>
+  <h2>Listing Rooms</h2>
 
-  <tbody>
-    <% @rooms.each do |room| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= room.name %></td>
-        <td><%= room.description %></td>
-        <td><%= room.price %></td>
-        <td><%= room.rules %></td>
-        <td><%= room.minimum_days %></td>
-        <td><%= room.address %></td>
-        <td><%= room.latitude %></td>
-        <td><%= room.longitude %></td>
-        <td><%= room.city.name %></td>
-        <td><%= room.user.username %></td>
-
-        <td><%= link_to 'Show', room %></td>
-        <td><%= link_to 'Edit', edit_room_path(room) %></td>
-        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Rules</th>
+        <th>Minimum Days</th>
+        <th>Address</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>City</th>
+        <th>Owner</th>
+        <th>Is Verified<th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @rooms.each do |room| %>
+        
+        <tr>
+          <td><%= room.name %></td>
+          <td><%= room.description %></td>
+          <td><%= room.price %></td>
+          <td><%= room.rules %></td>
+          <td><%= room.minimum_days %></td>
+          <td><%= room.address %></td>
+          <td><%= room.latitude %></td>
+          <td><%= room.longitude %></td>
+          <td><%= room.city.name %></td>
+          <td><%= room.user.username %></td>
+          <td><%= room.is_verified %></td>
 
-<%= link_to 'New Room', new_room_path %>
+          <td><%= link_to 'Show', room %></td>
+          <td><%= link_to 'Edit', edit_room_path(room) %></td>
+          <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Add New Room', new_room_path %>

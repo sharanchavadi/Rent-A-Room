@@ -61,10 +61,17 @@
 		<%= f.collection_select :user_id, User.all, :id, :username, prompt: "select name" %> <br/>
 	  </div>
 
-	  <div class="field">
-	    <%=  f.label :is_authorized %>
-	    <%= f.radio_button :is_authorized, true, :checked => "false" %> 
-	  </div>
+      <% if current_user.role? "admin" %>
+		  <div class="field">
+		    <%= f.label :is_verified %>
+		    <%= f.check_box :is_verified %> 
+		  </div>
+	  <% end %>
+      
+      <div class="field">
+        <%= f.label :amenities %>
+        <%= f.collection_check_boxes :amenity_ids, Amenity.all, :id, :name %>
+      </div>
 
 	  <div class="actions">
 	    <%= f.submit %>

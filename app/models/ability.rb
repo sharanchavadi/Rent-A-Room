@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     # user not logged in 
     if user.nil?
-        can :read, [City, Amenity]
+        can :read, [City, Amenity, Room]
     elsif user.role? "admin"
         can :manage, [City, Amenity, User, Room]
         can [:create, :read, :update], Role
