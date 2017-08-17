@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
 
-   #load_and_authorize_resource
+   load_and_authorize_resource
     
     def index
         @rooms = Room.all
@@ -54,7 +54,7 @@ class RoomsController < ApplicationController
 
     private
   
-    def article_params
+    def room_params
        params[:room].permit(:name, :description, :price, :rules, :minimum_days, :address, :latitude, :longitude, :is_authorized, :city_id, :user_id)
     end
     
