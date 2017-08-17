@@ -53,6 +53,17 @@ class RoomsController < ApplicationController
         @room.destroy
         redirect_to rooms_path, notice: "Successfully deleted #{@room.name}"
     end
+    
+    def my_rooms
+      authorize! :my_rooms, Room.new
+      @room = current_user.rooms
+    end
+
+    def unauthorized_rooms
+        authorize! :unauthorized_rooms, Room.new
+        @rooms = Room.where('is_verified = ?', false)
+    end
+
 
     private
   

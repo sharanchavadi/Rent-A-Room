@@ -1,13 +1,4 @@
-<% if can? :my_rooms, Room.new %>
-  <%= link_to "My Rooms", rooms_my_rooms_path %>
-<% end %>
-
-<% if can? :unauthorized_rooms, Room.new %>
-  <%= link_to "Unauthorized Rooms", rooms_unauthorized_rooms_path %>
-<% end %>
-
-  
-  <h2>Listing Rooms</h2>
+<h2> My Rooms </h2>
 
   <table>
     <thead>
@@ -26,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @rooms.each do |room| %>
+      <% @room.each do |room| %>
         
         <tr>
           <td><%= room.name %></td>

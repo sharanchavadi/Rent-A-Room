@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
+  get 'rooms/my_rooms'
+  get 'rooms/unauthorized_rooms'
+
   devise_for :users
   scope "/admin" do
      resources :users
   end
+  
   resources :amenities
   resources :cities
   resources :roles
   resources :rooms
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

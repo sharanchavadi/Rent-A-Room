@@ -20,4 +20,3 @@ class Room < ActiveRecord::Base
        end
     end
 end
-

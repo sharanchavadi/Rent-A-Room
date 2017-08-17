@@ -55,11 +55,6 @@
 		<%= f.label :city %>
 		<%= f.collection_select :city_id, City.all, :id, :name, prompt: "select city" %> <br/>
 	  </div>
-      
-      <div class="field">
-		<%= f.label :Owner %>
-		<%= f.collection_select :user_id, User.all, :id, :username, prompt: "select name" %> <br/>
-	  </div>
 
       <% if current_user.role? "admin" %>
 		  <div class="field">

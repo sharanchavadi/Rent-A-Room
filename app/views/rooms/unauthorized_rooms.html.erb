@@ -1,13 +1,4 @@
-<% if can? :my_rooms, Room.new %>
-  <%= link_to "My Rooms", rooms_my_rooms_path %>
-<% end %>
-
-<% if can? :unauthorized_rooms, Room.new %>
-  <%= link_to "Unauthorized Rooms", rooms_unauthorized_rooms_path %>
-<% end %>
-
-  
-  <h2>Listing Rooms</h2>
+<h2>Unauthorized Rooms</h2>
 
   <table>
     <thead>
@@ -41,14 +32,10 @@
           <td><%= room.user.username %></td>
           <td><%= room.is_verified %></td>
 
-          <td><%= link_to 'Show', room %></td>
-          <td><%= link_to 'Edit', edit_room_path(room) %></td>
-          <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Authorize' %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-
-  <br>
-
-  <%= link_to 'Add New Room', new_room_path %>
+<br/>
+<%= link_to 'Back', rooms_path %>

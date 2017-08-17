@@ -6,10 +6,12 @@ class Ability
     if user.nil?
         can :read, [City, Amenity, Room]
     elsif user.role? "admin"
-        can :manage, [City, Amenity, User, Room]
+        can :manage, [City, Amenity, User, Room] #do we really want admin to create rooms?
+        can :unauthorized_rooms, Room
         can [:create, :read, :update], Role
     elsif user.role? "host"
-        can [:read, :create], [City, Amenity, Room]
+        can [:create, :read], Room
+        can :my_rooms, Room
         can [:update, :destroy], Room do |room|
            room.user == user
         end
