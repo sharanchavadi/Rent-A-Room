@@ -32,10 +32,19 @@
           <td><%= room.user.username %></td>
           <td><%= room.is_verified %></td>
 
-          <td><%= link_to 'Authorize' %></td>
+          <td>
+            <%= form_for room do |f| %>
+
+                <%= f.hidden_field :is_verified, value: true %> 
+
+                <%= f.submit "Authorize" %>
+
+            <% end %> 
+          </td>
         </tr>
       <% end %>
     </tbody>
   </table>
 <br/>
+
 <%= link_to 'Back', rooms_path %>
