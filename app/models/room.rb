@@ -10,6 +10,8 @@ class Room < ActiveRecord::Base
 	validates_numericality_of :price, :minimum_days, :latitude, :longitude, :city_id, :user_id
 
 	after_create :change_guest_to_host
+  after_create :send_room_added_confirmation
+  after_update :send_room_authorized_confirmation
 
 	private
 
@@ -19,4 +21,16 @@ class Room < ActiveRecord::Base
           self.user.save
        end
     end
+end
+
+
+def send_room_added_confirmation
+   Notification.new_room_added(self).deliver!
+end
+
+
+def send_room_authorized_confirmation
+  if self.is_verified == true
+     Notification.room_authorized(self).deliver!
+  end
 end

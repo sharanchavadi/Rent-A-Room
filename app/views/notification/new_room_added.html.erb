@@ -1,0 +1,32 @@
+<p>Hello <%= @room.user.username %></p>
+
+<h2>Your room has been added and sent for an approval</h2>
+
+<h2> Room details: </h2>
+
+<table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Rules</th>
+        <th>Minimum Days</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><%= @room.name %></td>
+          <td><%= @room.description %></td>
+          <td><%= @room.price %></td>
+          <td><%= @room.rules %></td>
+          <td><%= @room.minimum_days %></td>
+          <td><%= @room.address %></td>
+          <td><%= @room.city.name %></td>
+          <td><%= @room.is_verified %></td>
+        </tr>
+    </tbody>
+</table>
