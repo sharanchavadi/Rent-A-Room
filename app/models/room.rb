@@ -5,6 +5,8 @@ class Room < ActiveRecord::Base
     
     has_many :amenity_rooms
     has_many :amenities, through: :amenity_rooms
+    has_many :images
+    accepts_nested_attributes_for :images
     
 	validates_presence_of :name, :description, :price, :rules, :minimum_days, :address, :latitude, :longitude, :city_id, :user_id
 	validates_numericality_of :price, :minimum_days, :latitude, :longitude, :city_id, :user_id

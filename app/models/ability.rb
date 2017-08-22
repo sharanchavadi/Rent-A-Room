@@ -10,7 +10,7 @@ class Ability
         can :unauthorized_rooms, Room
         can [:create, :read, :update], Role
     elsif user.role? "host"
-        can [:create, :read], Room
+        can [:create, :read], [Room, Image]
         can :my_rooms, Room
         can [:update, :destroy], Room do |room|
            room.user == user

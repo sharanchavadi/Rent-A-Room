@@ -10,8 +10,7 @@ class RoomsController < ApplicationController
 
     def new
         @room = Room.new
-        @room.user_id = current_user.id
-        
+        @image = Image.new        
     end
 
 
@@ -68,7 +67,7 @@ class RoomsController < ApplicationController
     private
   
     def room_params
-       params[:room].permit(:name, :description, :price, :rules, :minimum_days, :address, :latitude, :longitude, :is_verified, :city_id, :user_id, amenity_ids: [])
+       params[:room].permit(:name, :description, :price, :rules, :minimum_days, :address, :latitude, :longitude, :is_verified, :city_id, :user_id, images_attributes:[:id, :image, :room_id], amenity_ids: [])
     end
     
 end

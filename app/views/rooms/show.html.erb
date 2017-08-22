@@ -1,5 +1,12 @@
 <h2> Room details </h2>
 <p>
+  <strong>Image:</strong>
+   <%= @room.images.each do |image| %> 
+     <%= image_tag image.image.url %>
+   <% end %>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @room.name %>
 </p>

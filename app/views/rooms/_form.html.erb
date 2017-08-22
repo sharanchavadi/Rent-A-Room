@@ -67,7 +67,17 @@
         <%= f.label :amenities %>
         <%= f.collection_check_boxes :amenity_ids, Amenity.all, :id, :name %>
       </div>
-
+     
+      <%= f.fields_for :images, @image do |image| %>
+         <div class="field">
+         	<%#= binding.pry %>
+            <%= image.label :Add_image %>
+            <%= image.file_field :image %>
+            <%#= image.link_to_remove "Remove" %>
+         </div>
+      <% end %>
+      <%#= f.link_to_add "Add Image", :images %>
+      
 	  <div class="actions">
 	    <%= f.submit %>
 	  </div>

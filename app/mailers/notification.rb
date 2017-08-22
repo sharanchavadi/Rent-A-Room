@@ -7,7 +7,9 @@ class Notification < ApplicationMailer
   #
 	  def new_room_added(room)
 	    @room = room
-	    mail to: "#{room.user.email}", subject: "New room has been added - #{room.name}"
+	    admin = Role.find_by('name = ?', "admin")
+	    user = User.find_by('role_id = ?', admin.id)
+	    mail to: "#{user.email}", subject: "New room has been added - #{room.name}"
 	  end
 
 	  def room_authorized(room)
