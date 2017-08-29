@@ -12,6 +12,9 @@ class Ability
     elsif user.role? "host"
         can [:create, :read], [Room, Image]
         can :my_rooms, Room
+        can [:update, :destroy], Image do |image|
+           image.user == user
+        end
         can [:update, :destroy], Room do |room|
            room.user == user
         end
